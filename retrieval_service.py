@@ -25,8 +25,13 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/embed"
 EMBED_MODEL = "bge-m3"
-VAULT_DIR = r"D:/knowledgebase"
-DB_PATH = r"D:/knowledge_flow/vector_index.db"
+# 路径可配置：优先读环境变量；默认约定 vault 与本仓库同级、数据库在脚本旁
+HERE = os.path.dirname(os.path.abspath(__file__))
+VAULT_DIR = os.environ.get(
+    "KNOWLEDGE_VAULT_DIR",
+    os.path.normpath(os.path.join(HERE, "..", "knowledgebase")),
+)
+DB_PATH = os.environ.get("KNOWLEDGE_DB_PATH", os.path.join(HERE, "vector_index.db"))
 PORT = 8765
 TOP_N = 5
 HIGH_THRESHOLD = 0.9

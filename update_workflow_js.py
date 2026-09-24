@@ -12,10 +12,12 @@
 - 2026-09-19：加反编造「最高原则」——只提炼原文，禁止虚构例子/代码/命令/数字/步骤，没有则写「原文未提及」
 """
 import json
+import os
 import shutil
 
-SRC = r"D:/knowledge_flow/n8n_workflow_capture.json"
-BAK = r"D:/knowledge_flow/n8n_workflow_capture.json.bak"
+HERE = os.path.dirname(os.path.abspath(__file__))
+SRC = os.path.join(HERE, "n8n_workflow_capture.json")
+BAK = os.path.join(HERE, "n8n_workflow_capture.json.bak")
 
 JS = r"""const N = String.fromCharCode(10);
 const item = $input.all()[0];

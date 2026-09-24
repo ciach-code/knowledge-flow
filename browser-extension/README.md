@@ -10,7 +10,7 @@
 
 1. 地址栏输入 `edge://extensions`（Chrome 是 `chrome://extensions`）回车
 2. 打开右上角「开发人员模式」
-3. 点「加载解压缩的扩展」，选 `D:\knowledge_flow\browser-extension`
+3. 点「加载解压缩的扩展」，选 `browser-extension`
 4. 出现「AI 对话知识库捕获」即成功；工具栏会多一个图标（建议固定）
 
 ## 使用
@@ -22,7 +22,7 @@
 
 ## 测试（需 n8n 已启动）
 
-1. 先按 `handoff.md` 里的命令启动 n8n
+1. 先启动 n8n，并导入本仓库根目录的 `n8n_workflow_capture.json`
 2. 打开 ChatGPT / Claude / Gemini / Kimi / 豆包任一对话页，按 `Alt+S`
 3. 看角标 + 通知；摘要模型热态约 22s 出结果
 4. 去 Obsidian `00-待审核/` 查看生成的 `YYYY-MM-DD-HHmm-来源.md`

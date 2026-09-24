@@ -1,6 +1,8 @@
 // 合并进已有笔记：把当前笔记正文追加到目标笔记（弹窗选目标），删原笔记，并更新目标索引
 module.exports = async (params) => {
     const { app, quickAddApi } = params;
+    // 知识库 vault 根目录：从 Obsidian 读取，避免写死本机绝对路径
+    const VAULT_ROOT = app.vault.adapter.basePath || "";
     const file = app.workspace.getActiveFile();
     if (!file) { new Notice("没有打开的笔记"); return; }
     if (!file.path.startsWith("00-待审核/")) { new Notice("当前笔记不在待审核文件夹"); return; }
@@ -31,7 +33,7 @@ module.exports = async (params) => {
         await fetch("http://127.0.0.1:8765/index", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ path: "D:/knowledgebase/" + target.path }),
+            body: JSON.stringify({ path: VAULT_ROOT + "/" + target.path }),
         });
     } catch (e) {}
 };
