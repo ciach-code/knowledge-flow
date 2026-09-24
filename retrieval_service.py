@@ -155,6 +155,7 @@ def index_all():
 
 
 def index_one(path):
+    path = os.path.normpath(path)  # 统一正/反斜杠，匹配 index_all 的存储键
     with _sync_lock:
         with open(path, encoding="utf-8") as f:
             text = f.read()
@@ -170,6 +171,7 @@ def index_one(path):
 
 
 def delete_one(path):
+    path = os.path.normpath(path)  # 统一正/反斜杠，匹配 index_all 的存储键
     with _sync_lock:
         conn = get_db()
         conn.execute("DELETE FROM notes WHERE path=?", (path,))
