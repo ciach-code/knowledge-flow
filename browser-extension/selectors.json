@@ -1,0 +1,44 @@
+{
+  "_note": "新增网站：在 sites 数组里加一条即可（改这里就行，不用改 manifest、不用重新加载扩展）。字段：name=显示名；source=写入 webhook 的来源标记；match=域名包含匹配；message=每条消息的选择器；区分角色二选一——roleAttr=角色写在属性上（值 user/assistant），或 userSelector/assistantSelector=分别匹配用户/助手（message 需同时覆盖两者以保持顺序）。没配到或抓到空的网站会自动走兜底（抓页面 main 全文）。",
+  "sites": [
+    {
+      "name": "ChatGPT",
+      "source": "chatgpt",
+      "match": ["chatgpt.com", "chat.openai.com", "chat.com"],
+      "message": "[data-message-author-role]",
+      "roleAttr": "data-message-author-role"
+    },
+    {
+      "name": "Claude",
+      "source": "claude",
+      "match": ["claude.ai"],
+      "message": "[data-testid=\"user-message\"], [data-testid=\"assistant-message\"]",
+      "userSelector": "[data-testid=\"user-message\"]",
+      "assistantSelector": "[data-testid=\"assistant-message\"]"
+    },
+    {
+      "name": "Gemini",
+      "source": "gemini",
+      "match": ["gemini.google.com"],
+      "message": ".query-text, .user-query, .model-response-text, message-content",
+      "userSelector": ".query-text, .user-query",
+      "assistantSelector": ".model-response-text, message-content"
+    },
+    {
+      "name": "Kimi",
+      "source": "kimi",
+      "match": ["kimi.moonshot.cn", "kimi.com"],
+      "message": ".markdown, [class*=\"user-message\"], [class*=\"chat-user\"]",
+      "userSelector": "[class*=\"user-message\"], [class*=\"chat-user\"]",
+      "assistantSelector": ".markdown"
+    },
+    {
+      "name": "豆包",
+      "source": "doubao",
+      "match": ["doubao.com"],
+      "message": "[class*=\"markdown\"], [class*=\"user-message\"], [class*=\"assistant-message\"]",
+      "userSelector": "[class*=\"user-message\"]",
+      "assistantSelector": "[class*=\"markdown\"], [class*=\"assistant-message\"]"
+    }
+  ]
+}

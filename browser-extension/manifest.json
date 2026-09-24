@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "AI 对话知识库捕获",
+  "version": "0.2.0",
+  "description": "按 Alt+S 或点击图标，把当前 AI 对话（任意网站，如 ChatGPT/Claude/Gemini/Kimi/豆包等）发送到本地 n8n webhook 沉淀为笔记。可扩展，仅供个人本地使用。",
+  "permissions": ["activeTab", "scripting", "notifications"],
+  "host_permissions": [
+    "http://localhost:5678/*",
+    "http://127.0.0.1:5678/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "捕获当前对话到知识库 (Alt+S)",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "捕获当前对话到知识库"
+    }
+  }
+}

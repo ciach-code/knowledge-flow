@@ -1,0 +1,30 @@
+# ===== AI 对话相关（不提交）=====
+PRD .md
+task.md
+handoff.md
+ailog.md
+项目一_AI对话知识库.md
+
+# AI 助手工作记忆
+.workbuddy/
+
+# ===== 本机启动脚本（含本机绝对路径，不提交）=====
+start_backend.bat
+start_n8n.bat
+start_syncthing.bat
+
+# ===== 个人数据 / 密钥 =====
+vector_index.db
+
+# ===== 自动备份 / 运行快照（旧版本含明文 key，不提交）=====
+*.bak
+n8n_workflow_running_backup.json
+
+# ===== 测试脚本产物 =====
+test_prompt.json
+test_prompt_result.json
+test_prompt_result2.json
+
+# ===== Python 缓存 =====
+__pycache__/
+*.pyc
